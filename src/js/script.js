@@ -42,19 +42,21 @@
 
   function initActions() {
 
-    // add reference to all elements .book__image in .booksList
-    const allElements = containers.booksList.querySelectorAll(classNames.bookImage);
+    const allBooks = document.querySelector(select.container.booksList);
 
-    for(let book of allElements) {
-      book.addEventListener('dblclick', function(event) {
-        event.preventDefault();
+    allBooks.addEventListener('dblclick', function(event) {
+      event.preventDefault();
 
-        // get book id from data-id
-        const id = event.target.getAttribute('data-id');
+      const clickedElement = event.target;
 
-        if(!book.classList.contains(classNames.favoriteBooks)) {
+      if(clickedElement.classList.contains(classNames.bookImage)) {
+
+        const id = clickedElement.getAttribute('data-id');
+
+        if(!clickedElement.classList.contains(classNames.favoriteBooks)) {
+
           // add class favorite to clicked element
-          book.classList.add(classNames.favoriteBooks);
+          clickedElement.classList.add(classNames.favoriteBooks);
 
           // add id to favoriteBooks
           favoriteBooks.push(id);
@@ -65,12 +67,14 @@
 
           console.log('removedFavoriteBooks', removedFavoriteBooks);
 
-          book.classList.remove(classNames.favoriteBooks);
+          clickedElement.classList.remove(classNames.favoriteBooks);
         }
 
-        console.log(favoriteBooks);
-      });
-    }
+      }
+
+      console.log(favoriteBooks);
+    });
+
   }
 
   initActions();

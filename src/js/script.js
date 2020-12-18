@@ -46,21 +46,21 @@
     const allElements = containers.booksList.querySelectorAll(classNames.bookImage);
 
     for(let book of allElements) {
-      book.addEventListener('dblclick', function() {
+      book.addEventListener('dblclick', function(event) {
         event.preventDefault();
+
+        // get book id from data-id
+        const id = event.target.getAttribute('data-id');
 
         if(!favoriteBooks[book]) {
           // add class favorite to clicked element
           book.classList.add(classNames.favoriteBooks);
 
-          // get book id from data-id
-          const bookId = document.getElementById('data-id');
-
           // add id to favoriteBooks
-          favoriteBooks.push(bookId);
+          favoriteBooks.push(id);
 
         } else {
-          const indexOfBooks = favoriteBooks.indexOf(bookId);
+          const indexOfBooks = favoriteBooks.indexOf(id);
           const removedFavoriteBooks = favoriteBooks.splice(indexOfBooks, 1);
 
           console.log('removedFavoriteBooks', removedFavoriteBooks);

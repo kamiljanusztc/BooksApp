@@ -9,6 +9,7 @@
     },
     container: {
       booksList: '.books-list',
+      filters: '.filters',
     },
   };
 
@@ -39,10 +40,12 @@
   render();
 
   const favoriteBooks = [];
+  const filters = [];
 
   function initActions() {
 
     const allBooks = document.querySelector(select.container.booksList);
+    const allFilters = document.querySelector(select.container.filters);
 
     allBooks.addEventListener('dblclick', function(event) {
       event.preventDefault();
@@ -69,10 +72,24 @@
 
           clickedElement.classList.remove(classNames.favoriteBooks);
         }
+      }
+    });
 
+    allFilters.addEventListener('click', function(event) {
+      const clickedElement = event.target;
+
+      if(clickedElement.tagName === 'INPUT' && clickedElement.type === 'checkbox' && clickedElement.name === 'filter') {
+
+        if(clickedElement.checked) {
+          filters.push(clickedElement.value);
+        } else {
+          const indexOfFilters = filters.indexOf(clickedElement.value);
+          const removedFilters = filters.splice(indexOfFilters, 1);
+
+          console.log('removedFilters', removedFilters);
+        }
       }
 
-      console.log(favoriteBooks);
     });
 
   }

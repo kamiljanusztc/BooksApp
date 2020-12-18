@@ -52,7 +52,7 @@
         // get book id from data-id
         const id = event.target.getAttribute('data-id');
 
-        if(!favoriteBooks[book]) {
+        if(!book.classList.contains(classNames.favoriteBooks)) {
           // add class favorite to clicked element
           book.classList.add(classNames.favoriteBooks);
 

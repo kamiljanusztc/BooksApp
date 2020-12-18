@@ -49,7 +49,7 @@
 
       const clickedElement = event.target;
 
-      if(clickedElement.classList.contains(classNames.bookImage)) {
+      if(clickedElement.classList.contains('book__image')) {
 
         const id = clickedElement.getAttribute('data-id');
 

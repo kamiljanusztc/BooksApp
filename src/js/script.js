@@ -34,6 +34,8 @@
       const generatedHTML = templates.book(data);
       const generateDOM = utils.createDOMFromHTML(generatedHTML);
       containers.booksList.appendChild(generateDOM);
+      const ratingBgc = determineRatingBgc(book.rating);
+      //const ratingWidth = document.querySelector('rating');
     }
   }
 
@@ -125,6 +127,11 @@
         hiddenBook.classList.remove('hidden');
       }
     }
+  }
+
+  function determineRatingBgc(rating) {
+    let bgc = ratingBgc;
+
   }
 
   initActions();

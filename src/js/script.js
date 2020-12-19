@@ -82,16 +82,49 @@
 
         if(clickedElement.checked) {
           filters.push(clickedElement.value);
+
+          console.log(clickedElement);
+
+          filterBooks();
+
         } else {
           const indexOfFilters = filters.indexOf(clickedElement.value);
           const removedFilters = filters.splice(indexOfFilters, 1);
 
           console.log('removedFilters', removedFilters);
+          console.log(filters);
+
+          filterBooks();
         }
       }
 
     });
 
+  }
+
+  function filterBooks() {
+
+    for(let book of dataSource.books) {
+
+      let shouldBeHidden = false;
+
+      for(let filter of filters) {
+
+        if(!book.details[filter]) {
+          shouldBeHidden = true;
+
+          break;
+        }
+      }
+
+      const hiddenBook = document.querySelector('.book__image[data-id="' + book.id + '"]');
+
+      if(shouldBeHidden === true) {
+        hiddenBook.classList.add('hidden');
+      } else {
+        hiddenBook.classList.remove('hidden');
+      }
+    }
   }
 
   initActions();

@@ -37,7 +37,6 @@
       thisBookList.getElements();
       thisBookList.render();
       thisBookList.initActions();
-
     }
 
     initData() {
@@ -120,9 +119,7 @@
             thisBookList.filterBooks();
           }
         }
-
       });
-
     }
 
     filterBooks() {
@@ -190,5 +187,3 @@
 
   app.init;
 }
-
-

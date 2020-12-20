@@ -29,7 +29,7 @@
       select.container.booksList),
   };
 
-  class BookList {
+  class BooksList {
     constructor() {
       const thisBookList = this;
 
@@ -187,4 +187,8 @@
   }
 
   const app = new BooksList();
+
+  app.init;
 }
+
+

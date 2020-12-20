@@ -31,15 +31,13 @@
 
   function render() {
     for(const data of dataSource.books) {
+      data.ratingBgc = determineRatingBgc(data.rating);
+      data.ratingWidth = ratingWidth(data.rating);
       const generatedHTML = templates.book(data);
       const generateDOM = utils.createDOMFromHTML(generatedHTML);
       containers.booksList.appendChild(generateDOM);
-      const ratingBgc = determineRatingBgc(book.rating);
-      //const ratingWidth = document.querySelector('rating');
     }
   }
-
-  render();
 
   const favoriteBooks = [];
   const filters = [];
@@ -130,9 +128,37 @@
   }
 
   function determineRatingBgc(rating) {
-    let bgc = ratingBgc;
+    let bgc = '';
 
+    if(rating < 6) {
+      bgc = 'linear-gradient(to bottom,  #fefcea 0%, #f1da36 100%);';
+    }
+
+    if(rating > 6 && rating <= 8) {
+      bgc = 'linear-gradient(to bottom, #b4df5b 0%,#b4df5b 100%);';
+    }
+
+    if(rating > 8 && rating <=9) {
+      bgc = 'linear-gradient(to bottom, #299a0b 0%, #299a0b 100%);';
+    }
+
+    if(rating > 9) {
+      bgc = 'linear-gradient(to bottom, #ff0084 0%,#ff0084 100%);';
+    }
+
+    return bgc;
   }
 
+  function ratingWidth(rating) {
+    let width = '';
+    if(rating > 0 && rating < 100) {
+      width = 'rating' * 10 + '%';
+    }
+  }
+
+  render();
+
   initActions();
+
+  ratingWidth();
 }

@@ -151,9 +151,12 @@
 
   function ratingWidth(rating) {
     let width = '';
+
     if(rating > 0 && rating < 100) {
-      width = 'rating' * 10 + '%';
+      width = rating * 10;
     }
+
+    return width;
   }
 
   render();

@@ -138,48 +138,44 @@
           }
         }
 
-        const hiddenBook = document.querySelector('.book__image[data-id="' + book.id + '"]');
+        const bookToHidden = document.querySelector('.book__image[data-id="' + book.id + '"]');
 
         if (shouldBeHidden === true) {
-          hiddenBook.classList.add('hidden');
+          bookToHidden.classList.add('hidden');
         } else {
-          hiddenBook.classList.remove('hidden');
+          bookToHidden.classList.remove('hidden');
         }
       }
     }
 
     determineRatingBgc(rating) {
 
-      let bgc = '';
-
       if (rating < 6) {
-        bgc = 'linear-gradient(to bottom,  #fefcea 0%, #f1da36 100%);';
+        return 'linear-gradient(to bottom,  #fefcea 0%, #f1da36 100%);';
       }
 
       if (rating > 6 && rating <= 8) {
-        bgc = 'linear-gradient(to bottom, #b4df5b 0%,#b4df5b 100%);';
+        return 'linear-gradient(to bottom, #b4df5b 0%,#b4df5b 100%);';
       }
 
       if (rating > 8 && rating <= 9) {
-        bgc = 'linear-gradient(to bottom, #299a0b 0%, #299a0b 100%);';
+        return 'linear-gradient(to bottom, #299a0b 0%, #299a0b 100%);';
       }
 
       if (rating > 9) {
-        bgc = 'linear-gradient(to bottom, #ff0084 0%,#ff0084 100%);';
+        return 'linear-gradient(to bottom, #ff0084 0%,#ff0084 100%);';
       }
 
-      return bgc;
+      return '';
     }
 
     ratingWidth(rating) {
 
-      let width = '';
-
       if (rating > 0 && rating < 100) {
-        width = rating * 10;
+        return rating * 10;
       }
 
-      return width;
+      return '';
     }
   }
 
